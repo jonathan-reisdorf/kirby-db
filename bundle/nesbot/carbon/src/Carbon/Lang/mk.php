@@ -9,18 +9,52 @@
  * file that was distributed with this source code.
  */
 
+/*
+ * Authors:
+ * - Sashko Todorov
+ * - Josh Soref
+ * - François B
+ * - Serhan Apaydın
+ * - Borislav Mickov
+ * - JD Isaacks
+ * - Tomi Atanasoski
+ */
+
+use Carbon\CarbonInterface;
+
 return [
-    'year' => 'година|:count години',
-    'month' => 'месец|:count месеци',
+    'year' => ':count година|:count години',
+    'a_year' => 'година|:count години',
+    'y' => ':count год.',
+    'month' => ':count месец|:count месеци',
+    'a_month' => 'месец|:count месеци',
+    'm' => ':count месец|:count месеци',
     'week' => ':count седмица|:count седмици',
-    'day' => 'ден|:count дена',
-    'hour' => 'час|:count часа',
-    'minute' => 'минута|:count минути',
-    'second' => 'неколку секунди|:count секунди',
+    'a_week' => 'седмица|:count седмици',
+    'w' => ':count седмица|:count седмици',
+    'day' => ':count ден|:count дена',
+    'a_day' => 'ден|:count дена',
+    'd' => ':count ден|:count дена',
+    'hour' => ':count час|:count часа',
+    'a_hour' => 'час|:count часа',
+    'h' => ':count час|:count часа',
+    'minute' => ':count минута|:count минути',
+    'a_minute' => 'минута|:count минути',
+    'min' => ':count мин.',
+    'second' => ':count секунда|:count секунди',
+    'a_second' => 'неколку секунди|:count секунди',
+    's' => ':count сек.',
     'ago' => 'пред :time',
     'from_now' => 'после :time',
     'after' => 'по :time',
     'before' => 'пред :time',
+    'diff_now' => 'сега',
+    'diff_today' => 'Денес',
+    'diff_today_regexp' => 'Денес(?:\\s+во)?',
+    'diff_yesterday' => 'вчера',
+    'diff_yesterday_regexp' => 'Вчера(?:\\s+во)?',
+    'diff_tomorrow' => 'утре',
+    'diff_tomorrow_regexp' => 'Утре(?:\\s+во)?',
     'formats' => [
         'LT' => 'H:mm',
         'LTS' => 'H:mm:ss',
@@ -34,7 +68,7 @@ return [
         'nextDay' => '[Утре во] LT',
         'nextWeek' => '[Во] dddd [во] LT',
         'lastDay' => '[Вчера во] LT',
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
+        'lastWeek' => function (CarbonInterface $date) {
             switch ($date->dayOfWeek) {
                 case 0:
                 case 3:
@@ -78,4 +112,5 @@ return [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 1,
     'list' => [', ', ' и '],
+    'meridiem' => ['АМ', 'ПМ'],
 ];

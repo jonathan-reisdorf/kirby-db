@@ -9,6 +9,12 @@
  * file that was distributed with this source code.
  */
 
+/*
+ * Authors:
+ * - Josh Soref
+ * - tgfjt
+ * - JD Isaacks
+ */
 return [
     'year' => '{1}setaun|]1,Inf[:count taun',
     'month' => '{1}sewulan|]1,Inf[:count wulan',
@@ -19,6 +25,12 @@ return [
     'second' => '{1}sawetawis detik|]1,Inf[:count detik',
     'ago' => ':time ingkang kepengker',
     'from_now' => 'wonten ing :time',
+    'diff_today' => 'Dinten',
+    'diff_yesterday' => 'Kala',
+    'diff_yesterday_regexp' => 'Kala(?:\\s+wingi)?(?:\\s+pukul)?',
+    'diff_tomorrow' => 'Mbenjang',
+    'diff_tomorrow_regexp' => 'Mbenjang(?:\\s+pukul)?',
+    'diff_today_regexp' => 'Dinten(?:\\s+puniko)?(?:\\s+pukul)?',
     'formats' => [
         'LT' => 'HH.mm',
         'LTS' => 'HH.mm.ss',
@@ -35,7 +47,7 @@ return [
         'lastWeek' => 'dddd [kepengker pukul] LT',
         'sameElse' => 'L',
     ],
-    'meridiem' => function ($hour, $minute, $isLower) {
+    'meridiem' => function ($hour) {
         if ($hour < 11) {
             return 'enjing';
         }

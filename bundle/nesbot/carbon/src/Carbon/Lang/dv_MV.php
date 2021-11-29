@@ -3,14 +3,16 @@
 /**
  * This file is part of the Carbon package.
  *
- * (c) Ahmed Ali <ajaaibu@gmail.com>
+ * (c) Brian Nesbitt <brian@nesbot.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-\Symfony\Component\Translation\PluralizationRules::set(function ($number) {
-    return $number === 1 ? 0 : 1;
-}, 'dv');
+
+/*
+ * Authors:
+ * - Ahmed Ali
+ */
 
 $months = [
     'ޖެނުއަރީ',
@@ -57,6 +59,7 @@ return [
     'after' => ':time ފަހުން',
     'before' => ':time ކުރި',
     'diff_yesterday' => 'އިއްޔެ',
+    'diff_today' => 'މިއަދު',
     'diff_tomorrow' => 'މާދަމާ',
     'formats' => [
         'LT' => 'HH:mm',
@@ -74,9 +77,7 @@ return [
         'lastWeek' => '[ފާއިތުވި] dddd LT',
         'sameElse' => 'L',
     ],
-    'meridiem' => function ($hour, $minute, $isLower) {
-        return $hour < 12 ? 'މކ' : 'މފ';
-    },
+    'meridiem' => ['މކ', 'މފ'],
     'months' => $months,
     'months_short' => $months,
     'weekdays' => $weekdays,

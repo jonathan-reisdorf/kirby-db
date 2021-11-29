@@ -8,20 +8,47 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-\Symfony\Component\Translation\PluralizationRules::set(function ($number) {
-    return $number === 1 ? 0 : 1;
-}, 'si');
 
+/*
+ * Authors:
+ * - François B
+ * - Serhan Apaydın
+ * - JD Isaacks
+ * - Malinda Weerasinghe (MalindaWMD)
+ */
 return [
-    'year' => 'වසර|වසර :count',
-    'month' => 'මාසය|මාස :count',
-    'week' => 'සතියක්|සති :count යි',
-    'day' => 'දිනය|දින :count',
-    'hour' => 'පැය|පැය :count',
-    'minute' => 'මිනිත්තුව|මිනිත්තු :count',
-    'second' => 'තත්පර කිහිපය|තත්පර :count',
-    'ago' => ':timeකට පෙර',
-    'from_now' => ':timeකින්',
+    'year' => '{1}වසර 1|වසර :count',
+    'a_year' => '{1}වසරක්|වසර :count',
+    'month' => '{1}මාස 1|මාස :count',
+    'a_month' => '{1}මාසය|මාස :count',
+    'week' => '{1}සති 1|සති :count',
+    'a_week' => '{1}සතියක්|සති :count',
+    'day' => '{1}දින 1|දින :count',
+    'a_day' => '{1}දිනක්|දින :count',
+    'hour' => '{1}පැය 1|පැය :count',
+    'a_hour' => '{1}පැයක්|පැය :count',
+    'minute' => '{1}මිනිත්තු 1|මිනිත්තු :count',
+    'a_minute' => '{1}මිනිත්තුවක්|මිනිත්තු :count',
+    'second' => '{1}තත්පර 1|තත්පර :count',
+    'a_second' => '{1}තත්පර කිහිපයකට|තත්පර :count',
+    'ago' => ':time කට පෙර',
+    'from_now' => function ($time) {
+        if (preg_match('/දින \d/u', $time)) {
+            return $time.' න්';
+        }
+
+        return $time.' කින්';
+    },
+    'before' => ':time කට පෙර',
+    'after' => function ($time) {
+        if (preg_match('/දින \d/u', $time)) {
+            return $time.' න්';
+        }
+
+        return $time.' කින්';
+    },
+    'diff_now' => 'දැන්',
+    'diff_today' => 'අද',
     'diff_yesterday' => 'ඊයේ',
     'diff_tomorrow' => 'හෙට',
     'formats' => [
@@ -41,16 +68,11 @@ return [
         'sameElse' => 'L',
     ],
     'ordinal' => ':number වැනි',
-    'meridiem' => function ($hour, $minute, $isLower) {
-        if ($hour > 11) {
-            return $isLower ? 'ප.ව.' : 'පස් වරු';
-        }
-
-        return $isLower ? 'පෙ.ව.' : 'පෙර වරු';
-    },
+    'meridiem' => ['පෙර වරු', 'පස් වරු', 'පෙ.ව.', 'ප.ව.'],
     'months' => ['ජනවාරි', 'පෙබරවාරි', 'මාර්තු', 'අප්‍රේල්', 'මැයි', 'ජූනි', 'ජූලි', 'අගෝස්තු', 'සැප්තැම්බර්', 'ඔක්තෝබර්', 'නොවැම්බර්', 'දෙසැම්බර්'],
     'months_short' => ['ජන', 'පෙබ', 'මාර්', 'අප්', 'මැයි', 'ජූනි', 'ජූලි', 'අගෝ', 'සැප්', 'ඔක්', 'නොවැ', 'දෙසැ'],
     'weekdays' => ['ඉරිදා', 'සඳුදා', 'අඟහරුවාදා', 'බදාදා', 'බ්‍රහස්පතින්දා', 'සිකුරාදා', 'සෙනසුරාදා'],
     'weekdays_short' => ['ඉරි', 'සඳු', 'අඟ', 'බදා', 'බ්‍රහ', 'සිකු', 'සෙන'],
     'weekdays_min' => ['ඉ', 'ස', 'අ', 'බ', 'බ්‍ර', 'සි', 'සෙ'],
+    'first_day_of_week' => 1,
 ];

@@ -9,10 +9,16 @@
  * file that was distributed with this source code.
  */
 
+/*
+ * Authors:
+ * - Josh Soref
+ * - Kaushik Thanki
+ * - Josh Soref
+ */
 return [
     'year' => 'એક વર્ષ|:count વર્ષ',
     'y' => ':countવર્ષ|:countવર્ષો',
-    'month' => 'એક મહિનો|:count મહિનો',
+    'month' => 'એક મહિનો|:count મહિના',
     'm' => ':countમહિનો|:countમહિના',
     'week' => ':count અઠવાડિયું|:count અઠવાડિયા',
     'w' => ':countઅઠ.|:countઅઠ.',
@@ -28,6 +34,8 @@ return [
     'from_now' => ':time મા',
     'after' => ':time પછી',
     'before' => ':time પહેલા',
+    'diff_now' => 'હમણાં',
+    'diff_today' => 'આજ',
     'diff_yesterday' => 'ગઇકાલે',
     'diff_tomorrow' => 'કાલે',
     'formats' => [
@@ -46,7 +54,7 @@ return [
         'lastWeek' => '[પાછલા] dddd, LT',
         'sameElse' => 'L',
     ],
-    'meridiem' => function ($hour, $minute, $isLower) {
+    'meridiem' => function ($hour) {
         if ($hour < 4) {
             return 'રાત';
         }
@@ -68,4 +76,7 @@ return [
     'weekdays_short' => ['રવિ', 'સોમ', 'મંગળ', 'બુધ્', 'ગુરુ', 'શુક્ર', 'શનિ'],
     'weekdays_min' => ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
     'list' => [', ', ' અને '],
+    'first_day_of_week' => 0,
+    'day_of_first_week_of_year' => 1,
+    'weekend' => [0, 0],
 ];

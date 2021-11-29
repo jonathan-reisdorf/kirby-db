@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 $months = [
     'جنوری',
     'فروری',
@@ -33,6 +34,19 @@ $weekdays = [
     'ہفتہ',
 ];
 
+/*
+ * Authors:
+ * - Sawood Alam
+ * - Mehshan
+ * - Philippe Vaucher
+ * - Tsutomu Kuroda
+ * - tjku
+ * - Zaid Akram
+ * - Max Melentiev
+ * - hafezdivandari
+ * - Hossein Jabbari
+ * - nimamo
+ */
 return [
     'year' => 'ایک سال|:count سال',
     'month' => 'ایک ماہ|:count ماہ',
@@ -45,6 +59,13 @@ return [
     'from_now' => ':time بعد',
     'after' => ':time بعد',
     'before' => ':time پہلے',
+    'diff_now' => 'اب',
+    'diff_today' => 'آج',
+    'diff_today_regexp' => 'آج(?:\\s+بوقت)?',
+    'diff_yesterday' => 'گزشتہ کل',
+    'diff_yesterday_regexp' => 'گذشتہ(?:\\s+روز)?(?:\\s+بوقت)?',
+    'diff_tomorrow' => 'آئندہ کل',
+    'diff_tomorrow_regexp' => 'کل(?:\\s+بوقت)?',
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -61,9 +82,7 @@ return [
         'lastWeek' => '[گذشتہ] dddd [بوقت] LT',
         'sameElse' => 'L',
     ],
-    'meridiem' => function ($hour, $minute, $isLower) {
-        return $hour < 12 ? 'صبح' : 'شام';
-    },
+    'meridiem' => ['صبح', 'شام'],
     'months' => $months,
     'months_short' => $months,
     'weekdays' => $weekdays,
